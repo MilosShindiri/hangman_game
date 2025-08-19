@@ -1,19 +1,22 @@
 import { useState, useRef, useEffect } from "react";
 import { clsx } from "clsx";
 import { languages } from "/utils/languages.js";
-
+//letters are for displaying the word
+//chracters are for keyboard characters
 export default function Hangman() {
   const [word, setWord] = useState("react");
   const [guess, setGuess] = useState([]);
 
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+  // user guesses - clicked on character
   function addGuess(letter) {
     setGuess((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
     );
   }
 
+  // displaying languages(html,css,js,raect,ts,node,py,ruby,assembly)
   const langElements = languages.map((lang) => (
     <span
       className="language"
@@ -23,13 +26,13 @@ export default function Hangman() {
       {lang.name}
     </span>
   ));
-
+  // this is for displaying the word
   let letters = word.split("").map((letter, index) => (
     <span className="letter" key={index}>
-      {letter.toUpperCase()}
+      {guess.includes(letter) ? letter.toUpperCase() : ""}
     </span>
   ));
-
+  // create keyboard characters and index them and change the color based on correctnes
   let characters = alphabet.split("").map((character, index) => {
     const isGuessed = guess.includes(character);
     const isCorrect = isGuessed && word.includes(character);
