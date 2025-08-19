@@ -27,7 +27,7 @@ header > p {
   color: #8e8e8e;
 }
 
-.status {
+.statusWon {
   background-color: #10a95b;
   display: flex;
   flex-direction: column;
@@ -37,12 +37,33 @@ header > p {
   margin-block: 30px;
 }
 
-.status > h2 {
+.statusWon > h2 {
   margin: 5px;
   margin-bottom: 2px;
 }
 
-.status > p {
+.statusWon > p {
+  margin: 5px;
+  margin-top: 2px;
+  padding-left: 20px;
+}
+
+.statusLost {
+  background-color: #ba2a2a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f9f4da;
+  border-radius: 4px;
+  margin-block: 30px;
+}
+
+.statusLost > h2 {
+  margin: 5px;
+  margin-bottom: 2px;
+}
+
+.statusLost > p {
   margin: 5px;
   margin-top: 2px;
   padding-left: 20px;
@@ -60,6 +81,22 @@ header > p {
 .language {
   border-radius: 3px;
   padding: 4.5px;
+  position: relative;
+}
+
+/* Dimmed overlay with skull on "lost" languages */
+span.language.lost::before {
+  content: "💀";
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-size: 0.85rem;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .displayWord {
@@ -86,6 +123,7 @@ header > p {
   gap: 8px;
   justify-content: center;
   max-width: 450px;
+  margin-bottom: 20px;
 }
 
 .character {
@@ -97,10 +135,27 @@ header > p {
   cursor: pointer;
 }
 
+.character:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .correct {
   background-color: #10a95b;
 }
 
 .wrong {
   background-color: #ec5d49;
+}
+
+.new-game {
+  background-color: #11b5e5;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  width: 225px;
+  height: 40px;
+  padding: 6px 12px;
+  display: block;
+  margin-inline: auto;
+  cursor: pointer;
 }
