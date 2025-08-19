@@ -95,13 +95,15 @@ export default function Hangman() {
           from Assembly!
         </p>
       </header>
-      {isGameWon &&
-        (<Confetti />)(
+      {isGameWon && (
+        <>
+          <Confetti style={{ position: "absolute", top: 0, left: 0 }} />
           <section className="statusWon">
             <h2>You win!</h2>
             <p>Well done! 🎉</p>
           </section>
-        )}
+        </>
+      )}
       {isGameLost && (
         <section className="statusLost">
           <h2>Game over!</h2>
